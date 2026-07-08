@@ -27,6 +27,19 @@ The open `compare_provisions` tool is a deliberate **stub**: it returns the resp
 (free) verifiable citations, but performs no cross-corpus reasoning. The connective intelligence is
 the paid frontier.
 
+## Distribution
+
+The maintained layer is delivered two ways, to fit how you already work - the same
+provenance-verified, kept-current corpus through either channel:
+
+- **Hosted MCP endpoint** - a managed, authenticated API for AI agents and applications (this
+  connector, hosted, with SLAs).
+- **Governed data marketplaces** - the maintained dataset listed on AWS Data Exchange, Snowflake
+  Marketplace, and/or Databricks Marketplace, so enterprise data teams can subscribe with entitlement
+  and billing handled by the platform.
+
+Pick the channel that fits your stack; both serve the same corpus.
+
 ## Who this is for
 
 Legal-AI and data teams building retrieval or training pipelines that need provenance-tagged,
