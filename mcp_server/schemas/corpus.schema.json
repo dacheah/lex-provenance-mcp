@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dacheah/lex-provenance-mcp/schemas/corpus.schema.json",
+  "title": "Corpus (read interface)",
+  "description": "Describes a corpus as it is PRESENTED to a caller via list_corpora. This is an interface schema (what you receive), not a construction schema (how the corpus is built).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["corpus_id", "title", "canonical_repo", "included_here", "full_corpus_included"],
+  "properties": {
+    "corpus_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Stable machine identifier, e.g. 'space_law'."
+    },
+    "title": { "type": "string" },
+    "domain": { "type": "string", "description": "One-line human description of the body of law." },
+    "coverage_note": { "type": "string", "description": "Honest note on what is and is not covered, and that only a sample ships here." },
+    "canonical_repo": { "type": "string", "format": "uri", "description": "Authoritative source-of-truth repository." },
+    "canonical_dataset": { "type": "string", "format": "uri", "description": "Machine-readable dataset (e.g. Hugging Face)." },
+    "site": { "type": "string", "format": "uri", "description": "Browsable site, if any." },
+    "instrument_count_full": { "type": ["integer", "null"], "minimum": 0, "description": "Instruments in the FULL corpus (informational)." },
+    "instrument_count_sample": { "type": "integer", "minimum": 0, "description": "Instruments included as a sample in THIS repo." },
+    "languages": { "type": "array", "items": { "type": "string" } },
+    "included_here": {
+      "type": "string",
+      "enum": ["sample_manifest_only", "none"],
+      "description": "What this connector repo physically contains for the corpus."
+    },
+    "full_corpus_included": {
+      "type": "boolean",
+      "const": false,
+      "description": "Always false. The full corpus is never bundled in this connector."
+    },
+    "license_note": { "type": "string", "description": "Compilation licence + reminder that source texts keep their own terms." }
+  }
+}

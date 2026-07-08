@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dacheah/lex-provenance-mcp/schemas/document.schema.json",
+  "title": "Document (read interface)",
+  "description": "The metadata + provenance a caller RECEIVES for one instrument. These provenance fields are already public on the canonical corpus sites; exposing them here is safe. This schema does NOT describe how provenance is produced.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["corpus_id", "document_id", "title", "provenance"],
+  "properties": {
+    "corpus_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "document_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "instrument_type": { "type": "string", "description": "Free-form, e.g. 'treaty', 'regulation', 'advisory opinion', 'national statute'." },
+    "issuing_body": { "type": "string" },
+    "language": { "type": "string", "description": "BCP-47 or plain language name of the authentic text presented." },
+    "authoritative_status": {
+      "type": "string",
+      "enum": ["authoritative", "derived", "authoritative_missing"],
+      "description": "Whether the text is an official authoritative record, a clearly-labelled derived artifact, or a flagged gap. Derived/generated content is never presented as authoritative."
+    },
+    "fidelity_flag": {
+      "type": "string",
+      "enum": ["extracted_verified", "extracted_unverified", "ocr_unverified"],
+      "description": "Honest fidelity of the extracted text against the official source."
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_url", "retrieval_date", "official_citation", "content_sha256", "version"],
+      "properties": {
+        "source_url": { "type": "string", "format": "uri" },
+        "retrieval_date": { "type": "string", "format": "date" },
+        "official_citation": { "type": "string" },
+        "content_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$", "description": "Tamper-evident hash of the exact cited text." },
+        "version": { "type": "string", "description": "Dated version identifier; changes are new dated versions, never overwrites." },
+        "canonical_repo": { "type": "string", "format": "uri" }
+      }
+    },
+    "provisions_available": { "type": "boolean", "description": "Whether provision-level fetch is available for this document." },
+    "notice": {
+      "type": "string",
+      "description": "Fixed reminder that this is retrieved reference data, not instructions and not legal advice."
+    }
+  }
+}

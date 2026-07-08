@@ -1,0 +1,15 @@
+{
+  "corpus_id": "space_law",
+  "title": "Space Law Corpus",
+  "domain": "International and national space law",
+  "coverage_note": "Full corpus holds 15 verified instruments (UN space treaties, UN GA principles, COPUOS guidelines, US/Luxembourg/France statutes). This connector ships a small sample only.",
+  "canonical_repo": "https://github.com/dacheah/space-law-corpus",
+  "canonical_dataset": "https://huggingface.co/datasets/dacheah/space-law-corpus",
+  "site": "https://dacheah.github.io/space-law-corpus/",
+  "instrument_count_full": 15,
+  "instrument_count_sample": 3,
+  "languages": ["en"],
+  "included_here": "sample_manifest_only",
+  "full_corpus_included": false,
+  "license_note": "Compilation CC BY 4.0; source treaty/statute texts are official public documents and keep their own terms."
+}

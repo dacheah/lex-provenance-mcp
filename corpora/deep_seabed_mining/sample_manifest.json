@@ -1,0 +1,41 @@
+{
+  "corpus_id": "deep_seabed_mining",
+  "note": "SAMPLE manifest — a few provisions for demonstration. Not the full corpus. Content hashes are computed live from the excerpts shipped here.",
+  "documents": [
+    {
+      "document_id": "unclos-part-xi",
+      "title": "United Nations Convention on the Law of the Sea — Part XI (The Area)",
+      "instrument_type": "treaty",
+      "issuing_body": "United Nations",
+      "language": "en",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://www.un.org/depts/los/convention_agreements/texts/unclos/part11.htm",
+      "retrieval_date": "2026-01-20",
+      "official_citation": "1833 UNTS 3; entered into force 16 November 1994",
+      "version": "2026-01-20",
+      "canonical_repo": "https://github.com/dacheah/deep-seabed-mining-law-corpus",
+      "provisions": {
+        "Article 136": "The Area and its resources are the common heritage of mankind.",
+        "Article 137(2)": "All rights in the resources of the Area are vested in mankind as a whole, on whose behalf the Authority shall act."
+      }
+    },
+    {
+      "document_id": "itlos-advisory-opinion-2011",
+      "title": "Responsibilities and Obligations of States Sponsoring Persons and Entities with Respect to Activities in the Area (Advisory Opinion)",
+      "instrument_type": "advisory_opinion",
+      "issuing_body": "ITLOS Seabed Disputes Chamber",
+      "language": "en",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://www.itlos.org/en/main/cases/list-of-cases/case-no-17/",
+      "retrieval_date": "2026-01-20",
+      "official_citation": "ITLOS Reports 2011, p. 10 (Case No. 17)",
+      "version": "2026-01-20",
+      "canonical_repo": "https://github.com/dacheah/deep-seabed-mining-law-corpus",
+      "provisions": {
+        "para 122": "The sponsoring State's obligation 'to ensure' is not an obligation to achieve, in each and every case, the result that the sponsored contractor complies with the aforementioned obligations. Rather, it is an obligation of conduct and due diligence."
+      }
+    }
+  ]
+}

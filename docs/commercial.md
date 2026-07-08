@@ -1,0 +1,52 @@
+# Commercial model & how to get more
+
+This connector is intentionally the **free razor**. It is genuinely useful on its own — but the
+enriched, connected, and hosted layers are a separate offering. This page is both the boundary
+(what's free) and the invitation (how to get the rest).
+
+## Free / open (this repo)
+
+- The read-only connector and its tools (in-corpus search, fetch, verifiable citations).
+- The JSON Schemas and adapter notes.
+- Sample manifests pointing to the public canonical corpora.
+- The full public corpora themselves, at their canonical homes (GitHub + Hugging Face), under
+  CC BY 4.0 for the compilation (source texts keep their own terms).
+
+## Premium (not in this repo)
+
+| Capability | What it adds |
+|---|---|
+| **Full enriched corpora** | Every instrument, verified hashes, complete provision coverage, concept tags |
+| **Cross-corpus intelligence** | `compare_provisions` for real: cross-reference graphs (e.g. BBNJ ↔ UNCLOS), relation queries |
+| **Monitoring / treaty-status** | Change detection on official sources; alerts when the law moves |
+| **Hosted MCP endpoint** | Managed, authenticated, SLA-backed access — no local setup |
+| **Embeddings / semantic search** | Vector search over the authoritative + derived layers |
+| **Private-corpus onboarding** | Stand up a provenance-first corpus for *your* domain (sanctions, financial regulation, AML, data protection, …) behind the same connector |
+
+The open `compare_provisions` tool is a deliberate **stub**: it returns the response shape and the two
+(free) verifiable citations, but performs no cross-corpus reasoning. The connective intelligence is
+the paid frontier.
+
+## Who this is for
+
+Legal-AI and data teams building retrieval or training pipelines that need provenance-tagged,
+low-drift legal sources; GRC / reg-tech vendors wanting a rigorously-sourced legal spine; and
+institutions that need a specific body of law stood up as auditable, machine-readable infrastructure.
+
+## Getting in touch
+
+> **Interested in the full corpora, cross-corpus intelligence, a hosted endpoint, or a
+> provenance-first corpus for your own domain?**
+>
+> - Open a GitHub issue on this repo (label: `commercial`), or
+> - Reach the maintainer via the contact on **contact@danielcheah.com**.
+>
+> *(Replace with your preferred contact / waitlist link before public release.)*
+
+Tell us: the body of law or jurisdiction, whether you need hosted vs self-managed, and your use case
+(RAG, compliance, research, product). That's enough to scope a pilot.
+
+---
+
+*Business information, not an offer or financial/legal advice. Any engagement is under a separate
+written agreement.*

@@ -1,0 +1,37 @@
+[project]
+name = "lex-provenance-mcp"
+version = "0.1.0"
+description = "Verifiable, provenance-first legal corpora for AI systems — a read-only MCP connector."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "dacheah" }]
+keywords = [
+    "mcp", "model-context-protocol", "legal", "provenance",
+    "law", "corpus", "citation", "rag", "legal-informatics",
+]
+
+# Runtime deps are intentionally minimal for v0.1. The tool logic (mcp_server/
+# tools.py, registry.py) is pure-Python and importable/testable WITHOUT the MCP
+# SDK. The SDK is only needed to actually serve over MCP (see the [mcp] extra).
+dependencies = [
+    "jsonschema>=4.0",
+]
+
+[project.optional-dependencies]
+# Install with:  pip install -e ".[mcp]"   to run the server over stdio.
+mcp = ["mcp>=1.2.0"]
+dev = ["pytest>=7.0", "jsonschema>=4.0"]
+
+[project.scripts]
+lex-provenance-mcp = "lex_provenance_mcp.server:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["lex_provenance_mcp"]
+
+[tool.setuptools.package-dir]
+lex_provenance_mcp = "mcp_server"

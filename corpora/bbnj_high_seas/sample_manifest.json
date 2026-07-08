@@ -1,0 +1,40 @@
+{
+  "corpus_id": "bbnj_high_seas",
+  "note": "SAMPLE manifest — a few provisions for demonstration. Not the full corpus. Content hashes are computed live from the excerpts shipped here.",
+  "documents": [
+    {
+      "document_id": "bbnj-agreement-2023",
+      "title": "Agreement under UNCLOS on the Conservation and Sustainable Use of Marine Biological Diversity of Areas Beyond National Jurisdiction",
+      "instrument_type": "treaty",
+      "issuing_body": "United Nations",
+      "language": "en",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://www.un.org/bbnjagreement/en",
+      "retrieval_date": "2026-01-20",
+      "official_citation": "Adopted 19 June 2023; entered into force 17 January 2026 (C.N.447.2025.TREATIES-XXI.10)",
+      "version": "2026-01-20",
+      "canonical_repo": "https://github.com/dacheah/bbnj-high-seas-treaty-corpus",
+      "provisions": {
+        "Article 7": "Parties shall be guided by the following principles and approaches: (a) the polluter-pays principle; (b) the principle of the common heritage of humankind; (c) the freedom of marine scientific research."
+      }
+    },
+    {
+      "document_id": "unclos-1982",
+      "title": "United Nations Convention on the Law of the Sea (parent framework)",
+      "instrument_type": "treaty",
+      "issuing_body": "United Nations",
+      "language": "en",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://www.un.org/depts/los/convention_agreements/texts/unclos/unclos_e.pdf",
+      "retrieval_date": "2026-01-20",
+      "official_citation": "1833 UNTS 3; entered into force 16 November 1994",
+      "version": "2026-01-20",
+      "canonical_repo": "https://github.com/dacheah/bbnj-high-seas-treaty-corpus",
+      "provisions": {
+        "Article 87": "The high seas are open to all States, whether coastal or land-locked. Freedom of the high seas is exercised under the conditions laid down by this Convention and by other rules of international law."
+      }
+    }
+  ]
+}

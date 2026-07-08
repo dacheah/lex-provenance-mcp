@@ -1,0 +1,52 @@
+LexProvenance — lex-provenance-mcp
+Copyright 2026 Daniel Cheah
+
+This product includes software developed by Daniel Cheah.
+
+--------------------------------------------------------------------------------
+Scope of this repository and what it does NOT contain
+--------------------------------------------------------------------------------
+
+This repository is a READ-ONLY connector (interface layer). It deliberately
+contains only:
+
+  - connector/tool code (Apache-2.0)
+  - JSON Schemas describing the shape of what a caller RECEIVES (Apache-2.0)
+  - documentation (CC BY 4.0 unless a file states otherwise)
+  - small SAMPLE manifests (a handful of records per corpus, for demonstration)
+  - pointers to the canonical corpus repositories and datasets
+
+It does NOT contain, and is not intended to distribute:
+
+  - the full legal corpora (see the canonical repositories / datasets)
+  - any corpus-construction, ingestion, verification or provenance-building
+    methodology, tooling, or schemas
+  - embeddings, premium metadata, cross-reference graphs, monitoring logic,
+    scoring models, hosted-search indexes, or API credentials
+
+--------------------------------------------------------------------------------
+Licensing summary
+--------------------------------------------------------------------------------
+
+  - Connector code and JSON Schemas:  Apache License 2.0 (see LICENSE)
+  - Documentation (docs/, READMEs):   CC BY 4.0, unless a file states otherwise
+  - Sample manifests:                 illustrative only; the underlying source
+                                      legal texts are official public documents
+                                      and are NEVER relicensed — each keeps its
+                                      own terms, recorded per source.
+
+--------------------------------------------------------------------------------
+Trademarks
+--------------------------------------------------------------------------------
+
+"LexProvenance" and the names of the individual corpora and the maintainer's
+product/brand names are reserved. The Apache-2.0 licence grant above does NOT
+grant any right to use these names, marks, or logos except for reasonable and
+customary use in describing the origin of the work.
+
+--------------------------------------------------------------------------------
+No legal advice
+--------------------------------------------------------------------------------
+
+This is research and reference infrastructure, not legal advice. Nothing
+returned by these tools is a legal conclusion. See docs/legal-disclaimer.md.

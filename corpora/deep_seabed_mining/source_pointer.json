@@ -1,0 +1,15 @@
+{
+  "corpus_id": "deep_seabed_mining",
+  "title": "Deep Seabed Mining Law Corpus",
+  "domain": "Deep seabed mining law — mineral resources of 'the Area' (UNCLOS Part XI, ISA regime, US track)",
+  "coverage_note": "Full corpus holds ~10 instruments across the international (UNCLOS/ISA) regime and the US non-treaty track, including the draft ISA Mining Code. This connector ships a small sample only.",
+  "canonical_repo": "https://github.com/dacheah/deep-seabed-mining-law-corpus",
+  "canonical_dataset": "https://huggingface.co/datasets/dacheah/deep-seabed-mining-law-corpus",
+  "site": "https://dacheah.github.io/deep-seabed-mining-law-corpus/",
+  "instrument_count_full": 10,
+  "instrument_count_sample": 2,
+  "languages": ["en"],
+  "included_here": "sample_manifest_only",
+  "full_corpus_included": false,
+  "license_note": "Compilation CC BY 4.0; source texts (UNCLOS, ISA instruments, US regulations) are official public documents and keep their own terms."
+}

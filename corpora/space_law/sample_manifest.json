@@ -1,0 +1,58 @@
+{
+  "corpus_id": "space_law",
+  "note": "SAMPLE manifest — a few provisions of a few instruments, for demonstration. Not the full corpus. Excerpts are official public treaty text; each content hash returned by the connector is computed live from the excerpt shipped here, so it is fully reproducible.",
+  "documents": [
+    {
+      "document_id": "outer-space-treaty",
+      "title": "Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space",
+      "instrument_type": "treaty",
+      "issuing_body": "United Nations",
+      "language": "en",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://www.unoosa.org/oosa/en/ourwork/spacelaw/treaties/outerspacetreaty.html",
+      "retrieval_date": "2026-01-15",
+      "official_citation": "610 UNTS 205; entered into force 10 October 1967",
+      "version": "2026-01-15",
+      "canonical_repo": "https://github.com/dacheah/space-law-corpus",
+      "provisions": {
+        "Article VI": "States Parties to the Treaty shall bear international responsibility for national activities in outer space, including the Moon and other celestial bodies, whether such activities are carried on by governmental agencies or by non-governmental entities.",
+        "Article II": "Outer space, including the Moon and other celestial bodies, is not subject to national appropriation by claim of sovereignty, by means of use or occupation, or by any other means."
+      }
+    },
+    {
+      "document_id": "liability-convention",
+      "title": "Convention on International Liability for Damage Caused by Space Objects",
+      "instrument_type": "treaty",
+      "issuing_body": "United Nations",
+      "language": "en",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://www.unoosa.org/oosa/en/ourwork/spacelaw/treaties/liability-convention.html",
+      "retrieval_date": "2026-01-15",
+      "official_citation": "961 UNTS 187; entered into force 1 September 1972",
+      "version": "2026-01-15",
+      "canonical_repo": "https://github.com/dacheah/space-law-corpus",
+      "provisions": {
+        "Article II": "A launching State shall be absolutely liable to pay compensation for damage caused by its space object on the surface of the Earth or to aircraft in flight."
+      }
+    },
+    {
+      "document_id": "luxembourg-space-resources-2017",
+      "title": "Loi du 20 juillet 2017 sur l'exploration et l'utilisation des ressources de l'espace",
+      "instrument_type": "national_statute",
+      "issuing_body": "Grand Duchy of Luxembourg",
+      "language": "fr",
+      "authoritative_status": "authoritative",
+      "fidelity_flag": "extracted_verified",
+      "source_url": "https://legilux.public.lu/eli/etat/leg/loi/2017/07/20/a674/jo",
+      "retrieval_date": "2026-01-15",
+      "official_citation": "Mémorial A n° 674 du 28 juillet 2017",
+      "version": "2026-01-15",
+      "canonical_repo": "https://github.com/dacheah/space-law-corpus",
+      "provisions": {
+        "Article 1": "Les ressources de l'espace sont susceptibles d'appropriation."
+      }
+    }
+  ]
+}

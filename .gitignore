@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ---------------------------------------------------------------------------
+# GUARDRAIL: never commit full corpora, enrichment, or credentials into this
+# public connector repo. These belong in the canonical corpus repos (public)
+# or the private commercial layer — NOT here.
+# ---------------------------------------------------------------------------
+corpora/**/full/
+corpora/**/authoritative/
+corpora/**/derived/
+*.corpus.json
+embeddings/
+*.faiss
+*.npy
+secrets.*
+.env
+*.key
+credentials.json

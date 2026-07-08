@@ -1,0 +1,71 @@
+name: Commercial enquiry
+description: Ask about the full corpora, cross-corpus intelligence, a hosted endpoint, or a provenance-first corpus for your own domain.
+title: "[commercial] <short summary>"
+labels: ["commercial"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in **LexProvenance**. This open connector is the free tier;
+        the enriched, connected, and hosted layers are a separate offering (see
+        [`docs/commercial.md`](https://github.com/dacheah/lex-provenance-mcp/blob/main/docs/commercial.md)).
+
+        This is a scoping enquiry, not an order — any engagement is under a separate written
+        agreement. Please don't share confidential information here.
+  - type: dropdown
+    id: interest
+    attributes:
+      label: What are you interested in?
+      multiple: true
+      options:
+        - Full enriched corpus (complete instruments + verified hashes)
+        - Cross-corpus intelligence (relations / cross-reference graph)
+        - Monitoring / treaty-status alerts
+        - Hosted MCP endpoint (managed, authenticated, SLA)
+        - Embeddings / semantic search
+        - A provenance-first corpus for my own domain
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: domain
+    attributes:
+      label: Body of law / jurisdiction
+      description: e.g. "EU export controls", "US financial regulation", "space law". Leave blank if using an existing corpus.
+      placeholder: e.g. sanctions / AML / data protection / a specific treaty regime
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Deployment preference
+      options:
+        - Hosted (managed by you)
+        - Self-managed (we run it)
+        - Not sure yet
+    validations:
+      required: true
+  - type: dropdown
+    id: use_case
+    attributes:
+      label: Primary use case
+      options:
+        - Retrieval-augmented generation (RAG)
+        - Model training / evaluation data
+        - Compliance / GRC
+        - Research
+        - A product we are building
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Anything else to scope it?
+      description: Rough timeline, scale, whether this is for an organisation, and how to reach you.
+      placeholder: No confidential information, please.
+  - type: checkboxes
+    id: ack
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I understand this is a scoping enquiry, that nothing here is legal advice, and that any engagement is under a separate written agreement.
+          required: true

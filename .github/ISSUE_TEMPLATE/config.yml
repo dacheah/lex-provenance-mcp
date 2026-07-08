@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Maintainer / website
+    url: https://danielcheah.com
+    about: For anything you'd rather not post publicly, reach the maintainer via the website.
+  - name: Read the commercial model first
+    url: https://github.com/dacheah/lex-provenance-mcp/blob/main/docs/commercial.md
+    about: What's free vs premium, and what to include in a commercial enquiry.

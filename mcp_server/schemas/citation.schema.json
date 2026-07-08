@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dacheah/lex-provenance-mcp/schemas/citation.schema.json",
+  "title": "Citation (read interface)",
+  "description": "A verifiable citation returned by get_citation. Carries a tamper-evident content hash and dated version so the citation can be re-checked later.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["corpus_id", "document_id", "citation_text", "source_url", "content_sha256", "version", "retrieved"],
+  "properties": {
+    "corpus_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "document_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "provision": { "type": ["string", "null"], "description": "Pinpoint, e.g. 'Article VI', if the citation is to a provision." },
+    "citation_text": { "type": "string", "description": "Human-readable official citation." },
+    "source_url": { "type": "string", "format": "uri" },
+    "official_source": { "type": "string", "description": "Issuing body / official publication." },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of the exact cited text. Re-hash the official text to verify the citation is unchanged."
+    },
+    "version": { "type": "string", "description": "Dated version this citation is pinned to." },
+    "retrieved": { "type": "string", "format": "date" },
+    "authoritative_status": { "type": "string", "enum": ["authoritative", "derived", "authoritative_missing"] },
+    "verify_hint": { "type": "string", "description": "How a caller can independently re-verify the hash against the official source." },
+    "disclaimer": { "type": "string", "description": "Research/reference only; not legal advice." }
+  }
+}

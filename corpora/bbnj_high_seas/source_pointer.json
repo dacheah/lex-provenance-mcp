@@ -1,0 +1,15 @@
+{
+  "corpus_id": "bbnj_high_seas",
+  "title": "BBNJ / High Seas Treaty Corpus",
+  "domain": "Conservation and sustainable use of marine biodiversity beyond national jurisdiction (the 'High Seas Treaty') and its UNCLOS framework",
+  "coverage_note": "Full corpus holds 15 instruments including the 2023 BBNJ Agreement in all six authentic UN languages. This connector ships a small English-only sample.",
+  "canonical_repo": "https://github.com/dacheah/bbnj-high-seas-treaty-corpus",
+  "canonical_dataset": "https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus",
+  "site": "https://dacheah.github.io/bbnj-high-seas-treaty-corpus/",
+  "instrument_count_full": 15,
+  "instrument_count_sample": 2,
+  "languages": ["ar", "zh", "en", "fr", "ru", "es"],
+  "included_here": "sample_manifest_only",
+  "full_corpus_included": false,
+  "license_note": "Compilation CC BY 4.0; source UN texts are official public documents and keep their own terms."
+}
