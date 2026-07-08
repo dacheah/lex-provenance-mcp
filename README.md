@@ -26,9 +26,9 @@ law or regulation. The connector is the interface; the corpora are the asset.
 
 | Corpus | Domain | Canonical home |
 |---|---|---|
-| `space_law` | International & national space law | [github](https://github.com/dacheah/space-law-corpus) | Hugging Face [dataset](https://huggingface.co/datasets/dacheah/space-law-corpus) |
-| `deep_seabed_mining` | Deep seabed mining law (UNCLOS Part XI, ISA, US regime) | [github](https://github.com/dacheah/deep-seabed-mining-law-corpus) | Hugging Face [dataset](https://huggingface.co/datasets/dacheah/deep-seabed-mining-law-corpus) |
-| `bbnj_high_seas` | BBNJ / High Seas Treaty & framework | [github](https://github.com/dacheah/bbnj-high-seas-treaty-corpus) | Hugging Face [dataset](https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus) |
+| `space_law` | International & national space law | [github](https://github.com/dacheah/space-law-corpus) &middot; [Hugging Face dataset](https://huggingface.co/datasets/dacheah/space-law-corpus) |
+| `deep_seabed_mining` | Deep seabed mining law (UNCLOS Part XI, ISA, US regime) | [github](https://github.com/dacheah/deep-seabed-mining-law-corpus) &middot; [Hugging Face dataset](https://huggingface.co/datasets/dacheah/deep-seabed-mining-law-corpus) |
+| `bbnj_high_seas` | BBNJ / High Seas Treaty & framework | [github](https://github.com/dacheah/bbnj-high-seas-treaty-corpus) &middot; [Hugging Face dataset](https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus) |
 
 This repo ships only **sample manifests** (a few records each) that point to those canonical
 sources. It does **not** contain the full corpora.
