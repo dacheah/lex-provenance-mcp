@@ -1,13 +1,13 @@
-﻿# LexProvenance â€” `lex-provenance-mcp`
+# LexProvenance - `lex-provenance-mcp`
 
 [![tests](https://github.com/dacheah/lex-provenance-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/dacheah/lex-provenance-mcp/actions/workflows/tests.yml)
 
 > **Verifiable, provenance-first legal corpora for AI systems.**
 > A read-only [Model Context Protocol](https://modelcontextprotocol.io) connector that lets
-> AI agents *search, fetch, and cite* neutral, provenance-tracked bodies of law â€” with a
+> AI agents *search, fetch, and cite* neutral, provenance-tracked bodies of law - with a
 > tamper-evident content hash on every citation.
 
-**Status: v0.1 â€” public scaffold.** This is a deliberately thin, credible interface layer, not
+**Status: v0.1 - public scaffold.** This is a deliberately thin, credible interface layer, not
 a finished product. See the [roadmap](#roadmap) and [what this is not](#what-this-is-not).
 
 ---
@@ -19,16 +19,16 @@ search, fetch, and **cite** these documents safely, with each answer traceable t
 source and verifiable against a content hash."*
 
 The connector is **corpus-agnostic**. It speaks to any provenance-first legal corpus that
-exposes a standard manifest â€” today three public "global-commons" corpora, tomorrow any body of
+exposes a standard manifest - today three public "global-commons" corpora, tomorrow any body of
 law or regulation. The connector is the interface; the corpora are the asset.
 
 ## What it connects (today)
 
 | Corpus | Domain | Canonical home |
 |---|---|---|
-| `space_law` | International & national space law | [github](https://github.com/dacheah/space-law-corpus) Â· [ðŸ¤— dataset](https://huggingface.co/datasets/dacheah/space-law-corpus) |
-| `deep_seabed_mining` | Deep seabed mining law (UNCLOS Part XI, ISA, US regime) | [github](https://github.com/dacheah/deep-seabed-mining-law-corpus) Â· [ðŸ¤— dataset](https://huggingface.co/datasets/dacheah/deep-seabed-mining-law-corpus) |
-| `bbnj_high_seas` | BBNJ / High Seas Treaty & framework | [github](https://github.com/dacheah/bbnj-high-seas-treaty-corpus) Â· [ðŸ¤— dataset](https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus) |
+| `space_law` | International & national space law | [github](https://github.com/dacheah/space-law-corpus) | [dataset](https://huggingface.co/datasets/dacheah/space-law-corpus) |
+| `deep_seabed_mining` | Deep seabed mining law (UNCLOS Part XI, ISA, US regime) | [github](https://github.com/dacheah/deep-seabed-mining-law-corpus) | [dataset](https://huggingface.co/datasets/dacheah/deep-seabed-mining-law-corpus) |
+| `bbnj_high_seas` | BBNJ / High Seas Treaty & framework | [github](https://github.com/dacheah/bbnj-high-seas-treaty-corpus) | [dataset](https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus) |
 
 This repo ships only **sample manifests** (a few records each) that point to those canonical
 sources. It does **not** contain the full corpora.
@@ -42,9 +42,9 @@ sources. It does **not** contain the full corpora.
 | `fetch_document` | Return one document's metadata + provenance | Free |
 | `fetch_provision` | Return one provision (article/section) | Free |
 | `get_citation` | Return a **verifiable citation** (source, date, **SHA-256 hash**, version) | Free |
-| `compare_provisions` | Relate/compare provisions **across corpora** | **Stub â†’ premium** |
+| `compare_provisions` | Relate/compare provisions **across corpora** | **Stub -> premium** |
 
-Every tool is **read-only**. There are no write, edit, ingest, delete, or shell tools â€” by
+Every tool is **read-only**. There are no write, edit, ingest, delete, or shell tools - by
 design, and enforced by a test (`tests/test_read_only.py`). See [`docs/security.md`](docs/security.md).
 
 ## Verifiable citations (the differentiator)
@@ -52,7 +52,7 @@ design, and enforced by a test (`tests/test_read_only.py`). See [`docs/security.
 `get_citation` returns the content **SHA-256 hash** and the **dated version** of the exact text
 it cites. An agent's citation therefore points not just at "Article 14" but at *a specific,
 reproducible, tamper-checkable state* of Article 14. If the stored text changes by one
-character, the hash changes â€” so a citation can be re-verified later. See
+character, the hash changes - so a citation can be re-verified later. See
 [`docs/citation-model.md`](docs/citation-model.md).
 
 ## Quickstart
@@ -78,7 +78,7 @@ print(tools.get_citation("space_law", document_id="outer-space-treaty", provisio
 ## Commercial boundary
 
 This connector is the **free razor**. The enriched, connected, and hosted layers are a separate
-paid offering â€” see [`docs/commercial.md`](docs/commercial.md). In short:
+paid offering - see [`docs/commercial.md`](docs/commercial.md). In short:
 
 - **Free / open:** the connector, schemas, sample manifests, docs, in-corpus search/fetch/cite.
 - **Not in this repo (premium):** full enriched corpora, cross-corpus reasoning, embeddings,
@@ -87,7 +87,7 @@ paid offering â€” see [`docs/commercial.md`](docs/commercial.md). In short:
 ## What this is not
 
 - Not the corpora (those live in their own repositories and datasets).
-- Not the corpus-construction methodology (that is a separate, private toolkit â€” this repo
+- Not the corpus-construction methodology (that is a separate, private toolkit - this repo
   reveals *what you fetch*, never *how the record is built*).
 - Not legal advice. See [`docs/legal-disclaimer.md`](docs/legal-disclaimer.md).
 
@@ -102,7 +102,7 @@ paid offering â€” see [`docs/commercial.md`](docs/commercial.md). In short:
 
 ## Renaming
 
-The public identity lives in one file â€” [`mcp_server/identity.py`](mcp_server/identity.py).
+The public identity lives in one file - [`mcp_server/identity.py`](mcp_server/identity.py).
 Change `BRAND_NAME`, `REPO_SLUG`, `TOOL_NAMESPACE`, `PACKAGE_NAME` there (and rename the folder)
 to switch to any alternative name; nothing else hard-codes it.
 
