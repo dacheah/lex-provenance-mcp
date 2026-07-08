@@ -1,7 +1,7 @@
-# Cross-corpus queries (premium frontier — STUB in the open tier)
+# Cross-corpus queries (premium frontier - STUB in the open tier)
 
-Relating and comparing provisions *across* corpora — for example, how the BBNJ Agreement's use of
-"common heritage" relates to UNCLOS Part XI, or how the ISA regime and the US DSHMRA track diverge —
+Relating and comparing provisions *across* corpora - for example, how the BBNJ Agreement's use of
+"common heritage" relates to UNCLOS Part XI, or how the ISA regime and the US DSHMRA track diverge -
 is the connective intelligence that the **premium layer** provides. It is intentionally **not**
 implemented in this open connector.
 
