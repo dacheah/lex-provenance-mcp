@@ -40,6 +40,14 @@ provenance-verified, kept-current corpus through either channel:
 
 Pick the channel that fits your stack; both serve the same corpus.
 
+## Trust posture
+
+- **Neutral.** The corpora record what legal instruments say. They take no legal position and do not
+  represent anyone's view of the law - a neutral record is what makes them safe to build on.
+- **Verifiable.** Every provision carries a source, a dated version, and a SHA-256 content hash. Items
+  not independently verified are flagged **[verify]** so a reviewer can check them. Provenance is the
+  product: a citation you can re-verify, not a scraped snippet.
+
 ## Who this is for
 
 Legal-AI and data teams building retrieval or training pipelines that need provenance-tagged,
