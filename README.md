@@ -22,6 +22,19 @@ The connector is **corpus-agnostic**. It speaks to any provenance-first legal co
 exposes a standard manifest - today three public "global-commons" corpora, tomorrow any body of
 law or regulation. The connector is the interface; the corpora are the asset.
 
+## Why this, not a generic legislation feed?
+
+Most legal connectors give an AI the *current* text of a law and a link. This one gives it a
+**verifiable, point-in-time, regime-curated** record - the difference between a citation you can
+defend and a snippet you have to double-check:
+
+- **Tamper-evident** - every provision carries a SHA-256 content hash you can re-check, not just a URL.
+- **Point-in-time** - dated versions let you cite the law *as it stood* on a given day, not only "current".
+- **Structured & neutral** - a strict wall between official text and generated content, plus neutral
+  concept tags and cross-references.
+- **Curated by regime** - the assembled, verified corpus for a specific body of law (an AML or
+  digital-asset regime), not a firehose of every Act.
+
 ## What it connects (today)
 
 | Corpus | Domain | Canonical home |
