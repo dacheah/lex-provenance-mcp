@@ -47,6 +47,9 @@ Pick the channel that fits your stack; both serve the same corpus.
 - **Verifiable.** Every provision carries a source, a dated version, and a SHA-256 content hash. Items
   not independently verified are flagged **[verify]** so a reviewer can check them. Provenance is the
   product: a citation you can re-verify, not a scraped snippet.
+- **Multilingual source-certainty.** For cross-border and non-English work, the authoritative text is
+  the authentic-language original with a hash - a bilingual reviewer can verify with no ambiguity about
+  the source; machine translation is a labelled **[verify]** aid, not the record.
 
 ## Who this is for
 

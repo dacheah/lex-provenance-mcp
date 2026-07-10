@@ -22,6 +22,8 @@ defend and a snippet you have to double-check:
 - **Point-in-time** - dated versions let you cite the law *as it stood* on a given day, not only "current".
 - **Structured & neutral** - a strict wall between official text and generated content, plus neutral
   concept tags and cross-references.
+- **Authentic-language** - the official text in its own language is the record; any translation is
+  labelled unofficial, so the binding text is never ambiguous (BBNJ ships all six authentic UN languages).
 - **Curated by regime** - the assembled, verified corpus for a specific body of law (an AML or
   digital-asset regime), not a firehose of every Act.
 
