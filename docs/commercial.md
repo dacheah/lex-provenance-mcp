@@ -1,6 +1,6 @@
 # Commercial model & how to get more
 
-This connector is intentionally the **free razor**. It is genuinely useful on its own — but the
+This connector is intentionally the **free razor**. It is genuinely useful on its own - but the
 enriched, connected, and hosted layers are a separate offering. This page is both the boundary
 (what's free) and the invitation (how to get the rest).
 
@@ -16,12 +16,12 @@ enriched, connected, and hosted layers are a separate offering. This page is bot
 
 | Capability | What it adds |
 |---|---|
-| **Full enriched corpora** | Every instrument, verified hashes, complete provision coverage, concept tags |
-| **Cross-corpus intelligence** | `compare_provisions` for real: cross-reference graphs (e.g. BBNJ ↔ UNCLOS), relation queries |
-| **Monitoring / treaty-status** | Change detection on official sources; alerts when the law moves |
-| **Hosted MCP endpoint** | Managed, authenticated, SLA-backed access — no local setup |
+| **Full enriched corpora** | Every instrument, verified hashes, complete provision coverage, concept tags - kept current as the law changes |
+| **Cross-corpus intelligence** | A working `compare_provisions` (the shipped tool is a stub): cross-reference graphs (e.g. BBNJ <-> UNCLOS) and relation queries |
+| **Change alerts & relevance** | The corpus is kept current in-house; this layer proactively notifies you when a change lands - with a plain-language summary of what changed and why it matters to your use |
+| **Hosted MCP endpoint** | Managed, authenticated, SLA-backed access - no local setup |
 | **Embeddings / semantic search** | Vector search over the authoritative + derived layers |
-| **Private-corpus onboarding** | Stand up a provenance-first corpus for *your* domain (sanctions, financial regulation, AML, data protection, …) behind the same connector |
+| **Private-corpus onboarding** | Stand up a provenance-first corpus for *your* domain (sanctions, financial regulation, AML, data protection, ...) behind the same connector |
 
 The open `compare_provisions` tool is a deliberate **stub**: it returns the response shape and the two
 (free) verifiable citations, but performs no cross-corpus reasoning. The connective intelligence is
@@ -61,8 +61,6 @@ institutions that need a specific body of law stood up as auditable, machine-rea
 >
 > - Open a GitHub issue on this repo (label: `commercial`), or
 > - Reach the maintainer via the contact on **contact@danielcheah.com**.
->
-> *(Replace with your preferred contact / waitlist link before public release.)*
 
 Tell us: the body of law or jurisdiction, whether you need hosted vs self-managed, and your use case
 (RAG, compliance, research, product). That's enough to scope a pilot.
