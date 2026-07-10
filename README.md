@@ -12,16 +12,6 @@ a finished product. See the [roadmap](#roadmap) and [what this is not](#what-thi
 
 ---
 
-## Why this exists
-
-A dataset says *"here are some documents."* This connector says *"here is how an AI agent can
-search, fetch, and **cite** these documents safely, with each answer traceable to an official
-source and verifiable against a content hash."*
-
-The connector is **corpus-agnostic**. It speaks to any provenance-first legal corpus that
-exposes a standard manifest - today three public "global-commons" corpora, tomorrow any body of
-law or regulation. The connector is the interface; the corpora are the asset.
-
 ## Why this, not a generic legislation feed?
 
 Most legal connectors give an AI the *current* text of a law and a link. This one gives it a
@@ -34,6 +24,10 @@ defend and a snippet you have to double-check:
   concept tags and cross-references.
 - **Curated by regime** - the assembled, verified corpus for a specific body of law (an AML or
   digital-asset regime), not a firehose of every Act.
+
+It's also **corpus-agnostic**: one interface over any provenance-first corpus that exposes a standard
+manifest - three public "global-commons" corpora today, any regime tomorrow. The connector is the
+interface; the corpora are the asset.
 
 ## What it connects (today)
 
@@ -60,13 +54,12 @@ sources. It does **not** contain the full corpora.
 Every tool is **read-only**. There are no write, edit, ingest, delete, or shell tools - by
 design, and enforced by a test (`tests/test_read_only.py`). See [`docs/security.md`](docs/security.md).
 
-## Verifiable citations (the differentiator)
+## How verifiable citations work
 
-`get_citation` returns the content **SHA-256 hash** and the **dated version** of the exact text
-it cites. An agent's citation therefore points not just at "Article 14" but at *a specific,
-reproducible, tamper-checkable state* of Article 14. If the stored text changes by one
-character, the hash changes - so a citation can be re-verified later. See
-[`docs/citation-model.md`](docs/citation-model.md).
+`get_citation` returns the **SHA-256 hash** and **dated version** of the exact text it cites - so a
+citation points not at "Article 14" in the abstract but at *a specific, reproducible, tamper-checkable
+state* of Article 14. Change one character and the hash changes, so the citation can be re-verified
+later. See [`docs/citation-model.md`](docs/citation-model.md).
 
 ## Quickstart
 
@@ -99,9 +92,8 @@ paid offering - see [`docs/commercial.md`](docs/commercial.md). In short:
 
 ## What this is not
 
-- Not the corpora (those live in their own repositories and datasets).
-- Not the corpus-construction methodology (that is a separate, private toolkit - this repo
-  reveals *what you fetch*, never *how the record is built*).
+- Not the corpus-construction methodology - that is a separate, private toolkit. This repo reveals
+  *what you fetch*, never *how the record is built*.
 - Not legal advice. See [`docs/legal-disclaimer.md`](docs/legal-disclaimer.md).
 
 ## Roadmap
