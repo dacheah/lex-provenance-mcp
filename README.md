@@ -40,7 +40,10 @@ interface; the corpora are the asset.
 | `bbnj_high_seas` | BBNJ / High Seas Treaty & framework | [github](https://github.com/dacheah/bbnj-high-seas-treaty-corpus) &middot; [Hugging Face dataset](https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus) |
 
 This repo ships only **sample manifests** (a few records each) that point to those canonical
-sources. It does **not** contain the full corpora.
+sources. It does **not** contain the full corpora. The corpora are separate projects that share one
+provenance methodology - this connector is the interface over them, not their home. For the full
+roster (which corpora exist, which are registered here, and what it takes to add one) see
+[`docs/CORPUS-ATLAS.md`](docs/CORPUS-ATLAS.md).
 
 ## Tools (read-only)
 
