@@ -69,16 +69,29 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Scope.** UNCLOS Part XI, the 1994 Implementation Agreement, ISA exploration regulations and the
   draft Exploitation Regulations ("Mining Code"), the 2011 ITLOS Advisory Opinion, sponsoring-state
   laws, and the US non-UNCLOS track, which is marked as a distinct alternative.
-- **Size.** Ten instruments - nine in force plus the live Mining Code draft; 30 records. The
+- **Size.** Ten instruments - nine in force plus the live Mining Code draft; 37 records. The
   record-level layer added two on 2026-09-14: ITLOS Orders 2026/8 and 2026/9 of 4 August 2026 in
-  the NORI and TOML inquiries against the Authority.
+  the NORI and TOML inquiries against the Authority. **Issue #9 added seven on 2026-09-16**, closing
+  the incidental-proceeding set for both cases: the Order of the Chamber of 18 July 2026 in each case
+  (the order Orders 2026/8 and 2026/9 both cite), the two procedural Orders 2026/3 and 2026/4 of
+  10 June 2026, and the three judges' declarations published with the 18 July order. The declarations
+  opened a record class the corpus did not have, `itlos/declaration/*`. Five of the seven are
+  born-digital and are extracted from the publisher's own text layer; the other two are scans
+  recovered by two-engine OCR.
+- **The 18 July 2026 order has no order number.** ITLOS publishes it as `C34_Order_18.07.2026_orig.pdf`
+  and its 59 pages contain no "Order 2026/" string anywhere; the running header reads only
+  "List of Cases: No. 34". It is therefore identified by date (`case34-order-18jul2026`) rather than
+  by a number this corpus invented. This also closed the question left open in
+  `ready__itlos-order-case34-order8-2026.json`: the guessed `C34_Order_18.07.2026-7.pdf` is a 404, and
+  the instrument both ingested August orders cite by date is this one.
 - **Licence.** Compilation CC BY 4.0; source texts keep their own terms.
 - **Maintenance.** Live. Last sweep 2026-09-15 by monitor **v3.10**, 22 sources, 0 changed. **Two
   sources were added on 2026-09-14**: the per-case **incidental-proceeding sub-pages** for Cases 34 and
   35, which is where the provisional-measures documents actually live — the main case pages list only
   the numbered orders (3 and 2 documents) while those sub-pages carry 15 and 14. That gap concealed the
   **Order of 18 July 2026**, the order both ingested 2026/8 and 2026/9 cite; ingesting it and the
-  accompanying declarations is open as **issue #9**.
+  accompanying declarations was open as **issue #9**, and is done as of 2026-09-16 - all seven
+  documents are ingested, validated and on the board as 37 records.
 - **Maintenance (diagnosis, corrected 2026-09-14).** "Most flagged" was never "most changed": triage of
   the 2026-08-01 and 2026-09-01 sweeps found 19 flags and **no legal change**. Of the three causes
   originally reported, **two turned out not to exist** — the anti-bot widget and the newsletter footer
@@ -308,7 +321,7 @@ unreproducible text would be a false provenance claim. Read from each repository
 | Corpus | Records attested | Where it lives | Toolchain pinned by | Engine gate in CI |
 | --- | --- | --- | --- | --- |
 | `space_law` | **18 of 24** - `poppler 22.02.0`; the 6 text-sourced records carry none | in the recipe: `extraction/<corpus_id>/<version_id>.json` -> `extractor.toolchain`, written at calibrate time | `runs-on: ubuntu-22.04` + fail-closed assert | **wired 2026-09-16** (`c08ae04`) |
-| `deep_seabed_mining` | **27 of 30** - 21 at `poppler 22.02.0`, 6 text-sourced | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
+| `deep_seabed_mining` | **32 of 37** - 26 at `poppler 22.02.0` (21 scan-derived, 5 born-digital), 6 text-sourced | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
 | `bbnj_high_seas` | **14 of 16** - 13 at `poppler 24.02.0`, 1 at `pymupdf 1.28.2` | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-24.04` + fail-closed assert; `pymupdf==1.28.2` | **wired 2026-09-16** (`fbd1dc8`) |
 | `aml_sanctions` | **0 of 70, deliberately** | - | none | none |
 
@@ -317,27 +330,36 @@ space-law and bbnj, but **no workflow referenced it** - so `scripts/extract.py`,
 version-pinned extractor, could have changed with nothing noticing. Both are wired now (`c08ae04`,
 `fbd1dc8`); deep-seabed's was already live. AML has neither manifest nor gate.
 
-**Records with no attestation, and why that is the honest record.** deep-seabed's three OCR-derived
+**Records with no attestation, and why that is the honest record.** deep-seabed's five OCR-derived
 ITLOS orders and bbnj's two OCR language versions (`-zh`, `-ar`) get **no file at all**: committed
 deterministic code cannot re-derive an OCR text, so there is nothing to attest. The counts add up the
-way the gates do - 27 + 3 = 30, and 14 + 2 = 16 - and the absence is named by the tool and by CI
+way the gates do - 32 + 5 = 37, and 14 + 2 = 16 - and the absence is named by the tool and by CI
 rather than papered over. Text-sourced records are attested as `passthrough` where a format allows it,
 which is a claim rather than a gap: nothing was derived from a toolchain.
+
+**A born-digital record class where the pin turned out not to bite, and the claim is stronger for
+knowing it.** The five born-digital #9 records (the two 18 July orders and the three declarations)
+carry the Tribunal's own text layer, so they are extracted rather than OCR'd - and they derive
+**byte-identically under `poppler 22.02.0` in CI and `26.01.0` on the workstation**, checked
+hash-for-hash 2026-09-16. That does not make the CI derivation ceremony: the gate's claim is that a
+record re-derives from committed code under the pinned toolchain, and only CI can make it. It does
+mean the class is toolchain-stable where the scan-derived class is not, which is the opposite of what
+"same corpus, same pin" would lead you to assume.
 
 **AML is frozen, and its attestation is deliberately not backfilled.** Attesting it would mean
 re-deriving 70 texts under a pinned toolchain - rewriting a frozen corpus to prove a property nobody
 is querying. The freeze is the stronger statement: the corpus declares its own staleness and stops.
 Backfilling would be the first change the freeze exists to prevent.
 
-**Where attestation does not live.** The derived layer - all 140 `derived-metadata.yaml` files across
-the four corpora (24 / 30 / 16 / 70) - contains **no toolchain string at all**, and no schema in the
+**Where attestation does not live.** The derived layer - all 147 `derived-metadata.yaml` files across
+the four corpora (24 / 37 / 16 / 70) - contains **no toolchain string at all**, and no schema in the
 lineage table declares a slot for one (checked 2026-09-16). Attesting there would be a *new* field,
 not the reuse of an existing one, and generated metadata is the layer most prone to rebuild churn.
 
 **The pitfall that makes this work, measured.** Attestations must be authored **where the pinned
 toolchain runs - in CI, never on a workstation.** A local run under a different Poppler writes a
 *confidently wrong* version into the file, which is worse than no attestation. Under a local Poppler
-26.01.0 only **2 of bbnj's 14** recipes re-derive and **20 of deep-seabed's 21**; bbnj's texts are
+26.01.0 only **2 of bbnj's 14** recipes re-derive and **25 of deep-seabed's 26**; bbnj's texts are
 attested at 24.02.0 rather than 22.02.0 because that is the toolchain they actually reproduce under,
 which is why its pin is deliberately the newer image. Authoring is `workflow_dispatch`-only inside the
 pinned job, and the commits come from CI.
