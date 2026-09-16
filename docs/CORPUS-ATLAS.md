@@ -10,7 +10,8 @@ glance, whether "the legal corpora" means three corpora or six, or which of them
 
 Facts below were read from each repository's `main` branch and from this repo on **2026-09-15**
 (the maintenance sections were revised that day after the monitor v3.10 change and the triage it
-prompted; the rest of the atlas was read on 2026-09-14).
+prompted; the rest of the atlas was read on **2026-09-14**; the toolchain-attestation section was read
+on **2026-09-16**).
 Counts are the corpora's own declared figures rather than re-derived here, and the source is named
 for each one.
 
@@ -290,6 +291,61 @@ a diff that says *what* changed and are the sources worth treating as signal.
 Status is *not* currently exposed to connector callers. `list_corpora` returns the pointer, and the
 pointer has no status field - adding one is a schema change, and the pointer-shape constraints below
 apply.
+
+## Toolchain attestation coverage
+
+Reproducibility here is two properties, and they fail differently. **Pinning** says which toolchain
+runs *now* - a statement about the present. **Attestation** says which toolchain a *given record* was
+proven under - a historical claim, and the one that matters, because these corpora are append-only and
+dated. A global pin cannot express "records 1-26 derive under 22.02.0, record 27 under something
+else", and moving it silently restates the derivation claim for every record at once.
+
+So an attestation is held beside the record it applies to (never in the derived layer - see below),
+and is written **only where the text re-derived hash-for-hash in the same run**. Attesting an
+unreproducible text would be a false provenance claim. Read from each repository's `main` on
+**2026-09-16**:
+
+| Corpus | Records attested | Where it lives | Toolchain pinned by | Engine gate in CI |
+| --- | --- | --- | --- | --- |
+| `space_law` | **18 of 24** - `poppler 22.02.0`; the 6 text-sourced records carry none | in the recipe: `extraction/<corpus_id>/<version_id>.json` -> `extractor.toolchain`, written at calibrate time | `runs-on: ubuntu-22.04` + fail-closed assert | **wired 2026-09-16** (`c08ae04`) |
+| `deep_seabed_mining` | **27 of 30** - 21 at `poppler 22.02.0`, 6 text-sourced | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
+| `bbnj_high_seas` | **14 of 16** - 13 at `poppler 24.02.0`, 1 at `pymupdf 1.28.2` | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-24.04` + fail-closed assert; `pymupdf==1.28.2` | **wired 2026-09-16** (`fbd1dc8`) |
+| `aml_sanctions` | **0 of 70, deliberately** | - | none | none |
+
+**The engine gate had been dormant in two of these corpora.** `scripts/verify_engine.py` existed in
+space-law and bbnj, but **no workflow referenced it** - so `scripts/extract.py`, the sole
+version-pinned extractor, could have changed with nothing noticing. Both are wired now (`c08ae04`,
+`fbd1dc8`); deep-seabed's was already live. AML has neither manifest nor gate.
+
+**Records with no attestation, and why that is the honest record.** deep-seabed's three OCR-derived
+ITLOS orders and bbnj's two OCR language versions (`-zh`, `-ar`) get **no file at all**: committed
+deterministic code cannot re-derive an OCR text, so there is nothing to attest. The counts add up the
+way the gates do - 27 + 3 = 30, and 14 + 2 = 16 - and the absence is named by the tool and by CI
+rather than papered over. Text-sourced records are attested as `passthrough` where a format allows it,
+which is a claim rather than a gap: nothing was derived from a toolchain.
+
+**AML is frozen, and its attestation is deliberately not backfilled.** Attesting it would mean
+re-deriving 70 texts under a pinned toolchain - rewriting a frozen corpus to prove a property nobody
+is querying. The freeze is the stronger statement: the corpus declares its own staleness and stops.
+Backfilling would be the first change the freeze exists to prevent.
+
+**Where attestation does not live.** The derived layer - all 140 `derived-metadata.yaml` files across
+the four corpora (24 / 30 / 16 / 70) - contains **no toolchain string at all**, and no schema in the
+lineage table declares a slot for one (checked 2026-09-16). Attesting there would be a *new* field,
+not the reuse of an existing one, and generated metadata is the layer most prone to rebuild churn.
+
+**The pitfall that makes this work, measured.** Attestations must be authored **where the pinned
+toolchain runs - in CI, never on a workstation.** A local run under a different Poppler writes a
+*confidently wrong* version into the file, which is worse than no attestation. Under a local Poppler
+26.01.0 only **2 of bbnj's 14** recipes re-derive and **20 of deep-seabed's 21**; bbnj's texts are
+attested at 24.02.0 rather than 22.02.0 because that is the toolchain they actually reproduce under,
+which is why its pin is deliberately the newer image. Authoring is `workflow_dispatch`-only inside the
+pinned job, and the commits come from CI.
+
+One consequence worth knowing when reading a green history: GitHub suppresses workflow runs caused by
+a push made with the default `GITHUB_TOKEN`, so **"CI committed it" is not "CI verified it"** - an
+attestation commit does not re-trigger the job that checks attestations. Dispatch once more to see
+them checked.
 
 ## Adding a corpus: checklist
 
