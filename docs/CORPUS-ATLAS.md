@@ -69,7 +69,8 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Scope.** UNCLOS Part XI, the 1994 Implementation Agreement, ISA exploration regulations and the
   draft Exploitation Regulations ("Mining Code"), the 2011 ITLOS Advisory Opinion, sponsoring-state
   laws, and the US non-UNCLOS track, which is marked as a distinct alternative.
-- **Size.** Ten instruments - nine in force plus the live Mining Code draft; 37 records. The
+- **Size.** Ten instruments - nine in force plus the live Mining Code draft, held in two dated states as
+  it moved; **38 records**. The
   record-level layer added two on 2026-09-14: ITLOS Orders 2026/8 and 2026/9 of 4 August 2026 in
   the NORI and TOML inquiries against the Authority. **Issue #9 added seven on 2026-09-16**, closing
   the incidental-proceeding set for both cases: the Order of the Chamber of 18 July 2026 in each case
@@ -84,14 +85,42 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   by a number this corpus invented. This also closed the question left open in
   `ready__itlos-order-case34-order8-2026.json`: the guessed `C34_Order_18.07.2026-7.pdf` is a 404, and
   the instrument both ingested August orders cite by date is this one.
+- **The Mining Code draft is held in two dated states, and the later one carries no text - on purpose.**
+  **Issue #11 (2026-09-16)** added `isa/draft/exploitation-code-2026`: the Further Revised Consolidated
+  Text **ISBA/31/C/CRP.1/Rev.3** of 19 June 2026, which supersedes the December 2025 clean text the
+  corpus already held. That record holds the **byte-exact official PDF and no derived text**. Rev.3
+  marks its changes visually (insertions formatted apart, deletions left in place) and pdftotext merges
+  them: at Regulation 1 the paragraph numbers come back as `4.`, `[45.`, `56.`, `67.`, `[78.`, `89.` -
+  the old numbering and the renumbering in one token - and a cross-reference as "paragraph 1 and 3the
+  Schedule". A stored text would assert deleted wording as text and mint numbers the document does not
+  use, and the reproducibility gate could not catch it: it would re-derive the corruption byte-for-byte,
+  forever, with a green tick. **JC-010** records the rule (a marked-up revision is not a text record).
+  The faithful route exists and is preserved, not taken: the ISA publishes the same document as Word,
+  which carries 4,147 insertions and 3,447 deletions as machine-readable tracked changes, and that file
+  is in the corpus's `capture/` so a future derivation needs no re-fetch (raised as issue #15).
+  `isa/draft/exploitation-code-2025` is retained unchanged with `superseded_by` set.
 - **Licence.** Compilation CC BY 4.0; source texts keep their own terms.
-- **Maintenance.** Live. Last sweep 2026-09-15 by monitor **v3.10**, 22 sources, 0 changed. **Two
-  sources were added on 2026-09-14**: the per-case **incidental-proceeding sub-pages** for Cases 34 and
+- **Maintenance.** Live. **23 sources** as of 2026-09-16 (last sweep 2026-09-15 by monitor **v3.10**,
+  22 sources, 0 changed). **Two sources were added on 2026-09-14**: the per-case **incidental-proceeding
+  sub-pages** for Cases 34 and
   35, which is where the provisional-measures documents actually live - the main case pages list only
   the numbered orders (3 and 2 documents) while those sub-pages carry 15 and 14. That gap concealed the
   **Order of 18 July 2026**, the order both ingested 2026/8 and 2026/9 cite; ingesting it and the
   accompanying declarations was open as **issue #9**, and is done as of 2026-09-16 - all seven
-  documents are ingested, validated and on the board as 37 records.
+  documents are ingested, validated and on the board as **38 records**.
+- **A third source layer, because the annual review found the gap.** **Issue #12 (2026-09-16)** added
+  the **32nd session (2027)** page - where a Revision 4, an adoption, or a resumed negotiation would
+  appear first - and annotated the three Mining Code summary pages for what the 2026 review
+  established: they are byte-stable by construction while the negotiation moves on the session pages,
+  so a clean sweep there is *not* evidence that the Code has not moved. **Issue #14** added the check
+  no page monitor can do: `monitoring/held_revisions.json` declares the records whose instrument is
+  expected to be revised, and `scripts/check_revisions.py` compares each held identifier against the
+  highest revision on the declared pages, monthly, inside the source-watch workflow. It exists because
+  a page monitor cannot see a held text being superseded (the pages really do stay byte-stable - that
+  is how the corpus asserted a superseded Mining Code draft until a human ran the annual review), and
+  the reproducibility gate cannot either (it re-derives the superseded text, forever, with a green
+  tick). Its design rule: **a page that cannot be read, or that no longer mentions the series, is not
+  a pass** - it reports CANNOT DETERMINE and raises BROKEN.
 - **Maintenance (diagnosis, corrected 2026-09-14).** "Most flagged" was never "most changed": triage of
   the 2026-08-01 and 2026-09-01 sweeps found 19 flags and **no legal change**. Of the three causes
   originally reported, **two turned out not to exist** - the anti-bot widget and the newsletter footer
@@ -321,7 +350,7 @@ unreproducible text would be a false provenance claim. Read from each repository
 | Corpus | Records attested | Where it lives | Toolchain pinned by | Engine gate in CI |
 | --- | --- | --- | --- | --- |
 | `space_law` | **18 of 24** - `poppler 22.02.0`; the 6 text-sourced records carry none | in the recipe: `extraction/<corpus_id>/<version_id>.json` -> `extractor.toolchain`, written at calibrate time | `runs-on: ubuntu-22.04` + fail-closed assert | **wired 2026-09-16** (`c08ae04`) |
-| `deep_seabed_mining` | **32 of 37** - 26 at `poppler 22.02.0` (21 scan-derived, 5 born-digital), 6 text-sourced | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
+| `deep_seabed_mining` | **32 of 38** - 26 at `poppler 22.02.0` (21 scan-derived, 5 born-digital), 6 text-sourced; the 38th holds an artefact and no text, so there is nothing to derive and nothing to attest | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
 | `bbnj_high_seas` | **14 of 16** - 13 at `poppler 24.02.0`, 1 at `pymupdf 1.28.2` | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-24.04` + fail-closed assert; `pymupdf==1.28.2` | **wired 2026-09-16** (`fbd1dc8`) |
 | `aml_sanctions` | **0 of 70, deliberately** | - | none | none |
 
@@ -331,11 +360,12 @@ version-pinned extractor, could have changed with nothing noticing. Both are wir
 `fbd1dc8`); deep-seabed's was already live. AML has neither manifest nor gate.
 
 **Records with no attestation, and why that is the honest record.** deep-seabed's five OCR-derived
-ITLOS orders and bbnj's two OCR language versions (`-zh`, `-ar`) get **no file at all**: committed
-deterministic code cannot re-derive an OCR text, so there is nothing to attest. The counts add up the
-way the gates do - 32 + 5 = 37, and 14 + 2 = 16 - and the absence is named by the tool and by CI
-rather than papered over. Text-sourced records are attested as `passthrough` where a format allows it,
-which is a claim rather than a gap: nothing was derived from a toolchain.
+ITLOS orders, its artefact-only Rev.3 record (no text was derived, JC-010), and bbnj's two OCR language
+versions (`-zh`, `-ar`) get **no file at all**: committed deterministic code cannot re-derive an OCR
+text, and a record with no text has nothing to derive at all, so there is nothing to attest. The counts
+add up the way the gates do - 32 + 5 + 1 = 38, and 14 + 2 = 16 - and the absence is named by the tool and
+by CI rather than papered over. Text-sourced records are attested as `passthrough` where a format allows
+it, which is a claim rather than a gap: nothing was derived from a toolchain.
 
 **A born-digital record class where the pin turned out not to bite, and the claim is stronger for
 knowing it.** The five born-digital #9 records (the two 18 July orders and the three declarations)
