@@ -57,8 +57,8 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Languages.** `en`, with five authentic languages for the OST.
 - **Licence.** Compilation CC BY 4.0 (`LICENSE`); source texts keep their own terms.
 - **Maintenance.** Live. Last sweep 2026-09-14 by monitor **v3.10**, 9 sources, 0 changed. v3.10
-  unescapes HTML entities before hashing — a page that renders identically but encodes a space as
-  `&nbsp;` no longer moves the hash — and refuses to sweep on an unrecognised argument (a typo used to
+  unescapes HTML entities before hashing - a page that renders identically but encodes a space as
+  `&nbsp;` no longer moves the hash - and refuses to sweep on an unrecognised argument (a typo used to
   run a full live sweep and silently advance every baseline). Baselines were re-derived in the same
   change, so the first v3.10 sweep reported no spurious churn.
 - **Ships here.** 3 sample documents: `outer-space-treaty`, `liability-convention`,
@@ -87,18 +87,18 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Licence.** Compilation CC BY 4.0; source texts keep their own terms.
 - **Maintenance.** Live. Last sweep 2026-09-15 by monitor **v3.10**, 22 sources, 0 changed. **Two
   sources were added on 2026-09-14**: the per-case **incidental-proceeding sub-pages** for Cases 34 and
-  35, which is where the provisional-measures documents actually live — the main case pages list only
+  35, which is where the provisional-measures documents actually live - the main case pages list only
   the numbered orders (3 and 2 documents) while those sub-pages carry 15 and 14. That gap concealed the
   **Order of 18 July 2026**, the order both ingested 2026/8 and 2026/9 cite; ingesting it and the
   accompanying declarations was open as **issue #9**, and is done as of 2026-09-16 - all seven
   documents are ingested, validated and on the board as 37 records.
 - **Maintenance (diagnosis, corrected 2026-09-14).** "Most flagged" was never "most changed": triage of
   the 2026-08-01 and 2026-09-01 sweeps found 19 flags and **no legal change**. Of the three causes
-  originally reported, **two turned out not to exist** — the anti-bot widget and the newsletter footer
+  originally reported, **two turned out not to exist** - the anti-bot widget and the newsletter footer
   are *not on the extracted text surface at all*, because they sit in markup `to_text()` strips. What
   was real: the v3.10 entity change, plus footer/nav chrome (now excluded with two narrow
-  `ignore_patterns`). The date-like strings on these pages are **substantive** — the session schedule,
-  document citations, and the draft regulations' development chronology — and are deliberately **not**
+  `ignore_patterns`). The date-like strings on these pages are **substantive** - the session schedule,
+  document citations, and the draft regulations' development chronology - and are deliberately **not**
   suppressed. The only genuine development in the period was caught by the **record-level** layer, not
   the page layer: ITLOS Orders 2026/8 and 2026/9 of 4 August 2026. Treat this corpus's page-mode flag
   count as a churn indicator, not a change indicator.
@@ -113,11 +113,11 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Languages.** `ar`, `zh`, `en`, `fr`, `ru`, `es` - the widest of any corpus here.
 - **Licence.** Our contributions - the derived layer, schema, scripts, docs and generated site - are
   CC BY 4.0 (`LICENSE-derived-CC-BY-4.0.txt`); source texts are not relicensed.
-- **Maintenance.** Live. Last sweep 2026-09-15 by monitor **v3.10**, 7 sources, **1 flagged** — the UN
+- **Maintenance.** Live. Last sweep 2026-09-15 by monitor **v3.10**, 7 sources, **1 flagged** - the UN
   Treaty Collection **status document** for XXI.10. That source is byte-hashed (it is a PDF, not a
   page), so the flag is a real republication of the published document rather than the v3.10 entity
-  change: it currently reads *Signatories 145 · Parties 94 · entry into force 17 January 2026 ·
-  registration No. 59087*. Triaged and closed (bbnj #1/#2) with **no ingest** and no metadata change —
+  change: it currently reads *Signatories 145 | Parties 94 | entry into force 17 January 2026  | 
+  registration No. 59087*. Triaged and closed (bbnj #1/#2) with **no ingest** and no metadata change -
   the `entry_into_force_date` on all six language variants already records `2026-01-17`.
 - **Ships here.** 2 sample documents: `bbnj-agreement-2023`, `unclos-1982`.
 
@@ -291,13 +291,13 @@ Current: `space_law`, `deep_seabed_mining`, `bbnj_high_seas` are **live** (last 
 
 A `last_report.md` carries the version of the monitor that *produced it* (`_monitor v3.8_`), which is
 not necessarily the version currently checked in. In the gap between shipping a monitor change and the
-next scheduled sweep the two differ, and nothing inside a corpus can reveal it — a report filed by an
+next scheduled sweep the two differ, and nothing inside a corpus can reveal it - a report filed by an
 out-of-date monitor looks exactly like a healthy one. So each entry above names both: **last sweep by**
 v3.8, **deployed code** v3.9. All four monitored corpora share a byte-identical `watch_sources.py`, so
 their deployed versions should always agree; a divergence is drift, and is checked for automatically.
 
 **Page-mode flags are not changes.** A whole-page hash can only report that *something* moved. A
-re-flag at every sweep with a fresh hash is the signature of site churn, not law — see the
+re-flag at every sweep with a fresh hash is the signature of site churn, not law - see the
 `deep_seabed_mining` entry for the worked case. Record-level (`schema` / `json_extract`) sources carry
 a diff that says *what* changed and are the sources worth treating as signal.
 
@@ -413,5 +413,5 @@ warning: if a hash moves, the lineage table is wrong and any cross-corpus claim 
 Two of those checks are automated outside this repo, in the portfolio monitor beside the corpora: it
 verifies every schema hash above against the live repositories, alarms when a corpus's deployed
 `watch_sources.py` version diverges from the rest of the portfolio, and reports a stale sweep. That
-tool also runs weekly on a schedule. **The atlas is the claim; the monitor is the check** — when they
+tool also runs weekly on a schedule. **The atlas is the claim; the monitor is the check** - when they
 disagree, the atlas is wrong.
