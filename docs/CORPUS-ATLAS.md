@@ -70,7 +70,7 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   draft Exploitation Regulations ("Mining Code"), the 2011 ITLOS Advisory Opinion, sponsoring-state
   laws, and the US non-UNCLOS track, which is marked as a distinct alternative.
 - **Size.** Ten instruments - nine in force plus the live Mining Code draft, held in two dated states as
-  it moved; **38 records**. The
+  it moved; **42 records** (four more on 2026-09-18, below). The
   record-level layer added two on 2026-09-14: ITLOS Orders 2026/8 and 2026/9 of 4 August 2026 in
   the NORI and TOML inquiries against the Authority. **Issue #9 added seven on 2026-09-16**, closing
   the incidental-proceeding set for both cases: the Order of the Chamber of 18 July 2026 in each case
@@ -85,20 +85,46 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   by a number this corpus invented. This also closed the question left open in
   `ready__itlos-order-case34-order8-2026.json`: the guessed `C34_Order_18.07.2026-7.pdf` is a 404, and
   the instrument both ingested August orders cite by date is this one.
-- **The Mining Code draft is held in two dated states, and the later one carries no text - on purpose.**
-  **Issue #11 (2026-09-16)** added `isa/draft/exploitation-code-2026`: the Further Revised Consolidated
-  Text **ISBA/31/C/CRP.1/Rev.3** of 19 June 2026, which supersedes the December 2025 clean text the
-  corpus already held. That record holds the **byte-exact official PDF and no derived text**. Rev.3
-  marks its changes visually (insertions formatted apart, deletions left in place) and pdftotext merges
-  them: at Regulation 1 the paragraph numbers come back as `4.`, `[45.`, `56.`, `67.`, `[78.`, `89.` -
-  the old numbering and the renumbering in one token - and a cross-reference as "paragraph 1 and 3the
-  Schedule". A stored text would assert deleted wording as text and mint numbers the document does not
-  use, and the reproducibility gate could not catch it: it would re-derive the corruption byte-for-byte,
-  forever, with a green tick. **JC-010** records the rule (a marked-up revision is not a text record).
-  The faithful route exists and is preserved, not taken: the ISA publishes the same document as Word,
-  which carries 4,147 insertions and 3,447 deletions as machine-readable tracked changes, and that file
-  is in the corpus's `capture/` so a future derivation needs no re-fetch (raised as issue #15).
-  `isa/draft/exploitation-code-2025` is retained unchanged with `superseded_by` set.
+- **The Mining Code draft is held in two dated states; the newer one's text comes from the Word form,
+  not from the marked-up PDF.** **Issue #11 (2026-09-16)** added `isa/draft/exploitation-code-2026`:
+  the Further Revised Consolidated Text **ISBA/31/C/CRP.1/Rev.3** of 19 June 2026, which supersedes the
+  December 2025 clean text the corpus already held. Rev.3's PDF marks its changes visually (insertions
+  formatted apart, deletions left in place) and pdftotext merges them: at Regulation 1 the paragraph
+  numbers come back as `4.`, `[45.`, `56.`, `67.`, `[78.`, `89.` - the old numbering and the
+  renumbering in one token - and a cross-reference as "paragraph 1 and 3the Schedule". A stored text
+  taken from that PDF would assert deleted wording as text and mint numbers the document does not use,
+  and the reproducibility gate could not catch it: it would re-derive the corruption byte-for-byte,
+  forever, with a green tick. **JC-010** records the rule (a marked-up revision is not a text record),
+  and it still binds that PDF: `original.pdf` remains the citation anchor, and nothing is derived from
+  it. **Issue #15 (2026-09-17)** took the route JC-010 had preserved rather than taken. The ISA
+  publishes the same document as Word, carrying 4,147 insertions and 3,447 deletions as machine-readable
+  tracked changes; **that form is what the stored text is derived from**, held beside the PDF as
+  `original.docx`. The resolution rule is pure deletion - insertions kept, deletions dropped, nothing
+  substituted - because any space-inserting rule splits words the mark-up split mid-token
+  (`(a)` + deleted `t` + `he` becomes `(a) t he`). All 160 commentary boxes, every one of them a
+  single-row single-cell table, are excluded by structure rather than by text matching. The text is
+  569,582 characters (570,727 bytes) / 84,482 words / 1,754 paragraphs, carries its own per-record
+  attestation naming the Word-form toolchain (`CPython 3.11.16`), and the gate re-derives it on every
+  run - no exclusion. `isa/draft/exploitation-code-2025` is retained unchanged with `superseded_by` set.
+- **Sponsoring-state national law is in, for two States.** **Issue #13 (2026-09-18)** ingested Nauru's
+  International Seabed Minerals Act 2015, its Seabed Minerals Authority Act 2024 and the SBMA
+  Regulations 2025, and Tonga's Seabed Minerals Act 2014 in the Attorney General's Office 2020 Revised
+  Edition (CAP 20.07): **four records, 38 -> 42**. The ISA's National Legislation Database is used as a
+  finding aid only - it reproduces State submissions "in the form and the language(s) received" and does
+  not edit or translate them - so each record holds the State's own file, and each source URL was
+  verified by hash against the bytes held: three via the database, Tonga direct from the AGO register.
+  Three defects were found and fixed on the way. The section assembler read a Schedule form's own item
+  numbers as sections (the Regulations gave 64 against the Table of Provisions' 62), so it now stops at
+  the SCHEDULE heading and keeps the rest as printed, because a form's numbering carries on the section
+  sequence. Tonga's revised edition typesets each section's number and title as a margin block, which
+  pdftotext's default reading order pairs with the neighbouring section (85 of 125 captured), so that
+  record is read with `-layout` - a per-record argument on the same pinned toolchain, the mechanism the
+  two UNCLOS language copies already use for `-raw`; no new toolchain. And `extract.py --write`
+  overwrote a committed text with one that did not reproduce it, which corrupted the Chinese sulphides
+  regulation on a box whose poppler was not the pin; it now refuses to write over any committed hash.
+  Tonga is held as the current edition, not the as-enacted 2014 or the 2016 revised text the AGO also
+  publishes; the 2024 Act repeals the 2015 Act at s.70, recorded as `superseded_by`. Reuse terms are
+  unstated on all four (JC-013).
 - **Licence.** Compilation CC BY 4.0; source texts keep their own terms.
 - **Maintenance.** Live. **23 sources** as of 2026-09-16 (last sweep 2026-09-15 by monitor **v3.10**,
   22 sources, 0 changed). **Two sources were added on 2026-09-14**: the per-case **incidental-proceeding
@@ -107,7 +133,8 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   the numbered orders (3 and 2 documents) while those sub-pages carry 15 and 14. That gap concealed the
   **Order of 18 July 2026**, the order both ingested 2026/8 and 2026/9 cite; ingesting it and the
   accompanying declarations was open as **issue #9**, and is done as of 2026-09-16 - all seven
-  documents are ingested, validated and on the board as **38 records**.
+  documents are ingested, validated and on the board as **38 records** (**42** since the national-law
+  ingest of 2026-09-18).
 - **A third source layer, because the annual review found the gap.** **Issue #12 (2026-09-16)** added
   the **32nd session (2027)** page - where a Revision 4, an adoption, or a resumed negotiation would
   appear first - and annotated the three Mining Code summary pages for what the 2026 review
@@ -350,7 +377,7 @@ unreproducible text would be a false provenance claim. Read from each repository
 | Corpus | Records attested | Where it lives | Toolchain pinned by | Engine gate in CI |
 | --- | --- | --- | --- | --- |
 | `space_law` | **18 of 24** - `poppler 22.02.0`; the 6 text-sourced records carry none | in the recipe: `extraction/<corpus_id>/<version_id>.json` -> `extractor.toolchain`, written at calibrate time | `runs-on: ubuntu-22.04` + fail-closed assert | **wired 2026-09-16** (`c08ae04`) |
-| `deep_seabed_mining` | **32 of 38** - 26 at `poppler 22.02.0` (21 scan-derived, 5 born-digital), 6 text-sourced; the 38th holds an artefact and no text, so there is nothing to derive and nothing to attest | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
+| `deep_seabed_mining` | **37 of 42** - 30 at `poppler 22.02.0` (21 scan-derived, 9 born-digital), 6 text-sourced, 1 Word-form (`CPython 3.11.16`); the five OCR-derived ITLOS orders carry none by design | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-22.04`, module `PINNED_POPPLER`, fail-closed assert | wired |
 | `bbnj_high_seas` | **14 of 16** - 13 at `poppler 24.02.0`, 1 at `pymupdf 1.28.2` | per-record `extraction/<corpus_id>/<version_id>.json`, authored in CI | `runs-on: ubuntu-24.04` + fail-closed assert; `pymupdf==1.28.2` | **wired 2026-09-16** (`fbd1dc8`) |
 | `aml_sanctions` | **0 of 70, deliberately** | - | none | none |
 
@@ -363,7 +390,7 @@ version-pinned extractor, could have changed with nothing noticing. Both are wir
 ITLOS orders, its artefact-only Rev.3 record (no text was derived, JC-010), and bbnj's two OCR language
 versions (`-zh`, `-ar`) get **no file at all**: committed deterministic code cannot re-derive an OCR
 text, and a record with no text has nothing to derive at all, so there is nothing to attest. The counts
-add up the way the gates do - 32 + 5 + 1 = 38, and 14 + 2 = 16 - and the absence is named by the tool and
+add up the way the gates do - 37 + 5 = 42, and 14 + 2 = 16 - and the absence is named by the tool and
 by CI rather than papered over. Text-sourced records are attested as `passthrough` where a format allows
 it, which is a claim rather than a gap: nothing was derived from a toolchain.
 
@@ -381,7 +408,7 @@ re-deriving 70 texts under a pinned toolchain - rewriting a frozen corpus to pro
 is querying. The freeze is the stronger statement: the corpus declares its own staleness and stops.
 Backfilling would be the first change the freeze exists to prevent.
 
-**Where attestation does not live.** The derived layer - all 147 `derived-metadata.yaml` files across
+**Where attestation does not live.** The derived layer - all 148 `derived-metadata.yaml` files across
 the four corpora (24 / 37 / 16 / 70) - contains **no toolchain string at all**, and no schema in the
 lineage table declares a slot for one (checked 2026-09-16). Attesting there would be a *new* field,
 not the reuse of an existing one, and generated metadata is the layer most prone to rebuild churn.
