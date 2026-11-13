@@ -9,8 +9,8 @@ It exists because the alternative is five half-remembered repositories and no wa
 glance, whether "the legal corpora" means three corpora or six, or which of them is still maintained.
 
 Facts below were read from each repository's `main` branch and from this repo on **2026-09-15**
-(the maintenance sections were revised that day after the monitor v3.10 change and the triage it
-prompted; the rest of the atlas was read on **2026-09-14**; the toolchain-attestation section was read
+(the maintenance sections were revised on **2026-11-13** after the deployed monitor moved to v3.11;
+the rest of the atlas was read on **2026-09-14**; the toolchain-attestation section was read
 on **2026-09-16**).
 Counts are the corpora's own declared figures rather than re-derived here, and the source is named
 for each one.
@@ -56,11 +56,14 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   records. The Outer Space Treaty is held in all five authentic languages.
 - **Languages.** `en`, with five authentic languages for the OST.
 - **Licence.** Compilation CC BY 4.0 (`LICENSE`); source texts keep their own terms.
-- **Maintenance.** Live. Last sweep 2026-09-14 by monitor **v3.10**, 9 sources, 0 changed. v3.10
-  unescapes HTML entities before hashing - a page that renders identically but encodes a space as
-  `&nbsp;` no longer moves the hash - and refuses to sweep on an unrecognised argument (a typo used to
-  run a full live sweep and silently advance every baseline). Baselines were re-derived in the same
-  change, so the first v3.10 sweep reported no spurious churn.
+- **Maintenance.** Live. Last sweep 2026-11-01 by monitor **v3.11**, 9 sources, 0 changed (1 manual:
+  the ASTRO database, which a stdlib fetch cannot see). Deployed code is the same v3.11. v3.10, which
+  this build still carries, unescapes HTML entities before hashing - a page that renders identically
+  but encodes a space as `&nbsp;` no longer moves the hash - and refuses to sweep on an unrecognised
+  argument (a typo used to run a full live sweep and silently advance every baseline). Baselines were
+  re-derived with that change, so the first v3.10 sweep reported no spurious churn. v3.11 retains each
+  page source's comparable text and writes a bounded diff note when a page moves; it does not change
+  what is hashed, so it needed no re-baseline.
 - **Ships here.** 3 sample documents: `outer-space-treaty`, `liability-convention`,
   `luxembourg-space-resources-2017`.
 
@@ -126,8 +129,13 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   publishes; the 2024 Act repeals the 2015 Act at s.70, recorded as `superseded_by`. Reuse terms are
   unstated on all four (JC-013).
 - **Licence.** Compilation CC BY 4.0; source texts keep their own terms.
-- **Maintenance.** Live. **23 sources** as of 2026-09-16 (last sweep 2026-09-15 by monitor **v3.10**,
-  22 sources, 0 changed). **Two sources were added on 2026-09-14**: the per-case **incidental-proceeding
+- **Maintenance.** Live. **23 sources**. Last sweep 2026-11-01 by monitor **v3.11**, 23 sources,
+  **6 flagged**, not triaged here. Five are page-mode (ISA Legal and Technical Commission, the 31st
+  session (2026), the 32nd session (2027), the US Federal Register JSON feed, and the NOAA deep
+  seabed page) and one is record-level: the ITLOS list of cases gained one new record, titled in the
+  sweep as a provisional-measures case on hydrocarbon exploitation in the South-West Atlantic. A
+  page-mode flag is not a legal change; the record-level flag has not been ingested. **Two sources
+  were added on 2026-09-14**: the per-case **incidental-proceeding
   sub-pages** for Cases 34 and
   35, which is where the provisional-measures documents actually live - the main case pages list only
   the numbered orders (3 and 2 documents) while those sub-pages carry 15 and 14. That gap concealed the
@@ -169,12 +177,13 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Languages.** `ar`, `zh`, `en`, `fr`, `ru`, `es` - the widest of any corpus here.
 - **Licence.** Our contributions - the derived layer, schema, scripts, docs and generated site - are
   CC BY 4.0 (`LICENSE-derived-CC-BY-4.0.txt`); source texts are not relicensed.
-- **Maintenance.** Live. Last sweep 2026-09-15 by monitor **v3.10**, 7 sources, **1 flagged** - the UN
-  Treaty Collection **status document** for XXI.10. That source is byte-hashed (it is a PDF, not a
-  page), so the flag is a real republication of the published document rather than the v3.10 entity
-  change: it currently reads *Signatories 145 | Parties 94 | entry into force 17 January 2026  | 
-  registration No. 59087*. Triaged and closed (bbnj #1/#2) with **no ingest** and no metadata change -
-  the `entry_into_force_date` on all six language variants already records `2026-01-17`.
+- **Maintenance.** Live. Last sweep 2026-11-01 by monitor **v3.11**, 7 sources, **3 flagged**, not
+  triaged here: the UN BBNJ text of the Agreement, the UN Treaty Collection **status document** for
+  XXI.10 (byte-hashed; the sweep names no new party count), and the UN BBNJ GA resolutions page.
+  The previous flag on that status document, swept 2026-09-15 by v3.10, was triaged and closed
+  (bbnj #1/#2) with **no ingest**: it then read Signatories 145, Parties 94, entry into force
+  17 January 2026, registration No. 59087, and `entry_into_force_date` on all six language variants
+  already recorded `2026-01-17`. That reading is the September document, not the November one.
 - **Ships here.** 2 sample documents: `bbnj-agreement-2023`, `unclos-1982`.
 
 ## Corpora not yet connector-addressable
@@ -190,8 +199,9 @@ away from being addressable. Neither has one.
 - **Distinctive feature.** 13 further records are **withheld** from the public release because their
   reuse terms are not yet confirmed clean. This is the only corpus here that publishes a
   reuse-terms gate.
-- **Maintenance.** No source monitor and no `monitoring/` directory at all; last repository activity
-  2026-08-05, last content change 2026-07-11. Treat as **stale** rather than live.
+- **Maintenance.** **Stale**, not live. The v3.11 monitor and a 57-entry `monitoring/sources.json`
+  are checked in (2026-10-15), but there is no workflow and no sweep has been committed. Last commit
+  on `main`: 2026-10-15.
 - **Dataset.** None published to Hugging Face - the only corpus in the roster without one.
 - **Why it matters for the connector.** It is the roster's largest and most commercially legible
   corpus, and the only one with a flat export (`data/documents.jsonl` + `data/provisions.jsonl`)
@@ -207,7 +217,10 @@ away from being addressable. Neither has one.
 - **Distinctive feature.** Carries a FATF cross-jurisdiction crosswalk mapping each FATF
   Recommendation to its UN basis - the strongest cross-reference layer in the roster.
 - **Status.** **FROZEN as at 2026-08-04.** Source monitoring was deliberately switched off; the final
-  sweep ran 2026-08-03 (60 sources, 10 changed, 18 flagged for manual review). The corpus is frozen,
+  sweep ran 2026-08-03 by monitor **v3.8** (60 sources, 10 changed, 18 flagged for manual review).
+  Deployed code now reads **v3.11** (ported 2026-10-15) but is not the estate file: it is the 3.9
+  line plus the v3.11 retention change, and it does not carry v3.10. No sweep has run since that
+  port, on purpose. The corpus is frozen,
   not withdrawn: every record is still byte-exact, hash-verifiable and honestly dated. It carries a
   Zenodo DOI and its own frozen-notice document.
 - **Why the frozen flag is the point.** This corpus is the roster's proof that honest dating works. A
@@ -340,17 +353,36 @@ Status is evidenced by a corpus's own artefacts, never asserted:
 | **Frozen** | Monitoring deliberately switched off; records honest as at their own retrieval date | A dated frozen notice; monitoring config removed or disabled |
 | **Stale** | No monitoring and no recent activity; not deliberately frozen | Absent `monitoring/`, old last commit |
 
-Current: `space_law`, `deep_seabed_mining`, `bbnj_high_seas` are **live** (last sweeps 2026-09-01);
-`aml-sanctions` is **frozen** (2026-08-04); digital-asset is **stale** (last activity 2026-08-05).
+Current: `space_law`, `deep_seabed_mining`, `bbnj_high_seas` are **live** (last sweeps 2026-11-01,
+by monitor v3.11); `aml-sanctions` is **frozen** (2026-08-04; deployed constant v3.11 is a partial
+port, last sweep 2026-08-03 by v3.8); digital-asset is **stale** (v3.11 script checked in, no sweep
+and no workflow; last commit 2026-10-15).
 
 ### Two monitor versions, and why both are recorded
 
-A `last_report.md` carries the version of the monitor that *produced it* (`_monitor v3.8_`), which is
+A `last_report.md` carries the version of the monitor that *produced it* (`_monitor vX.Y_`), which is
 not necessarily the version currently checked in. In the gap between shipping a monitor change and the
 next scheduled sweep the two differ, and nothing inside a corpus can reveal it - a report filed by an
-out-of-date monitor looks exactly like a healthy one. So each entry above names both: **last sweep by**
-v3.8, **deployed code** v3.9. All four monitored corpora share a byte-identical `watch_sources.py`, so
-their deployed versions should always agree; a divergence is drift, and is checked for automatically.
+out-of-date monitor looks exactly like a healthy one. So each entry above names both.
+
+Read from each repository's `main` on **2026-11-13**:
+
+| Corpus | Last sweep by | Deployed code |
+|---|---|---|
+| `space_law` | v3.11 (2026-11-01) | v3.11 |
+| `deep_seabed_mining` | v3.11 (2026-11-01) | v3.11 |
+| `bbnj_high_seas` | v3.11 (2026-11-01) | v3.11 |
+| `aml_sanctions` | v3.8 (2026-08-03) | constant v3.11, partial port |
+| digital-asset | none | v3.11 checked in, never swept |
+
+The three live corpora and digital-asset share a byte-identical `watch_sources.py`
+(`md5 d94b2618d60764fc48fec2c45355fba8`). AML does not (`md5 006df32fa9e8f6c44d639ef9367b3c02`):
+its constant reads v3.11 because the retention change was ported onto its own 3.9 line, and the file
+does not carry v3.10. A divergence among **live** corpora is drift, and is checked for automatically.
+The portfolio roster expects v3.11, which matches every constant. It cannot see AML's missing v3.10,
+because the detector reads only the constant; that omission is recorded in AML's frozen notice.
+The layout table's `monitoring/` row is the September count and was not re-audited; digital-asset's
+cell (`-`) is no longer true.
 
 **Page-mode flags are not changes.** A whole-page hash can only report that *something* moved. A
 re-flag at every sweep with a fresh hash is the signature of site churn, not law - see the
