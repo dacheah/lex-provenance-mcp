@@ -130,11 +130,16 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
   unstated on all four (JC-013).
 - **Licence.** Compilation CC BY 4.0; source texts keep their own terms.
 - **Maintenance.** Live. **23 sources**. Last sweep 2026-11-01 by monitor **v3.11**, 23 sources,
-  **6 flagged**, not triaged here. Five are page-mode (ISA Legal and Technical Commission, the 31st
-  session (2026), the 32nd session (2027), the US Federal Register JSON feed, and the NOAA deep
-  seabed page) and one is record-level: the ITLOS list of cases gained one new record, titled in the
-  sweep as a provisional-measures case on hydrocarbon exploitation in the South-West Atlantic. A
-  page-mode flag is not a legal change; the record-level flag has not been ingested. **Two sources
+  **6 flagged**, triaged and closed on 2026-11-13 (deep-seabed #17) with no ingest. The Legal and
+  Technical Commission changed two members (Paulus KAINGE to Aphary MUYONGO, Namibia; Se-Jong JU to
+  Jonguk KIM, Republic of Korea). The 32nd session moved the Finance Committee from 5-9 to 6-9 July
+  2027. The 31st session's pre-sweep body was not recovered; the post-sweep page includes
+  ISBA/31/A/17 (President's statement, advance unedited), which is not claimed as the November
+  addition. The Federal Register feed's newest document is the 13 October 2026 notice of an
+  exploration-licence application, and the NOAA page's post-sweep text is dated 16 October 2026 and
+  carries the same application. Neither adds an instrument. The record-level flag is ITLOS Case
+  No. 37, a provisional-measures case on hydrocarbon exploitation in the South-West Atlantic, left
+  open as a scope question (deep-seabed #18). **Two sources
   were added on 2026-09-14**: the per-case **incidental-proceeding
   sub-pages** for Cases 34 and
   35, which is where the provisional-measures documents actually live - the main case pages list only
@@ -177,13 +182,17 @@ open one (see [`corpus-boundaries.md`](corpus-boundaries.md)).
 - **Languages.** `ar`, `zh`, `en`, `fr`, `ru`, `es` - the widest of any corpus here.
 - **Licence.** Our contributions - the derived layer, schema, scripts, docs and generated site - are
   CC BY 4.0 (`LICENSE-derived-CC-BY-4.0.txt`); source texts are not relicensed.
-- **Maintenance.** Live. Last sweep 2026-11-01 by monitor **v3.11**, 7 sources, **3 flagged**, not
-  triaged here: the UN BBNJ text of the Agreement, the UN Treaty Collection **status document** for
-  XXI.10 (byte-hashed; the sweep names no new party count), and the UN BBNJ GA resolutions page.
-  The previous flag on that status document, swept 2026-09-15 by v3.10, was triaged and closed
-  (bbnj #1/#2) with **no ingest**: it then read Signatories 145, Parties 94, entry into force
-  17 January 2026, registration No. 59087, and `entry_into_force_date` on all six language variants
-  already recorded `2026-01-17`. That reading is the September document, not the November one.
+- **Maintenance.** Live. Last sweep 2026-11-01 by monitor **v3.11**, 7 sources, **3 flagged**,
+  triaged and closed on 2026-11-13 (bbnj #4) with no ingest. The text-of-the-Agreement page and the
+  GA resolutions page each changed one token, `bbnj agreement` to `BBNJ Agreement`, on the same
+  host. The XXI.10 status PDF, raw-byte identical to the sweep's now-digest, reads Signatories 145,
+  Parties 105. The new deposit, paired on the same physical line as the name, is Nepal: signature
+  20 September 2023, 30 October 2026, no `a` or `AA` marker. Entry into force 17 January 2026 and
+  registration No. 59087 are unchanged. There is no parties field, so nothing to ingest. The
+  baseline commit did not include the diff notes the report named; the after state was read from
+  the live pages. The previous flag on that status document, swept 2026-09-15 by v3.10, was triaged
+  and closed (bbnj #1/#2) with **no ingest**: it then read Signatories 145, Parties 94. A later
+  triage (bbnj #3, 13 October) recorded Parties 104. Those are earlier documents, not this one.
 - **Ships here.** 2 sample documents: `bbnj-agreement-2023`, `unclos-1982`.
 
 ## Corpora not yet connector-addressable
